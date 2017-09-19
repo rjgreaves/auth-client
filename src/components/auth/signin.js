@@ -10,8 +10,18 @@ import {signInUser } from '../../actions';
 class SignIn extends Component {
 
     handleFormSubmit({ email, password }) {
-        console.log(email, password);
-        this.props.signInUser({email, password});
+        return this.props.signInUser({email, password});
+    }
+
+    renderAlert() {
+        if (this.props.errorMessage) {
+            return (
+                <div className="alert alert-danger">
+                    <strong>Oops! </strong>{this.props.errorMessage}
+                </div>
+            )
+
+        }
     }
 
     render() {
@@ -28,18 +38,22 @@ class SignIn extends Component {
                     <label>Password:</label>
                     <Field name="password" component="input" type="password" className="form-control"/>
                 </fieldset>
+                {this.renderAlert()}
                 <button action="submit" className="btn btn-primary">Sign In</button>
             </form>
        )
     }
 }
 
-
 const mapDispatchToProps = dispatch => ({
-    signInUser
+    signInUser: (email, password) => dispatch(signInUser(email, password))
 });
 
-export default connect(null, mapDispatchToProps)(reduxForm({
+const mapStateToProps = state => {
+    return {errorMessage: state.auth.error};
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(reduxForm({
     form: 'signin',
     fields: ['email', 'password']
 })(SignIn));
