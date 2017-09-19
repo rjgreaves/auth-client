@@ -1,22 +1,15 @@
-import React from 'react';
 import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
-import { createStore, applyMiddleware } from 'redux';
-import { Router, Route, IndexRoute, browserHistory } from 'react-router';
-import reduxThunk from 'redux-thunk';
+import React from 'react';
+import { Router, browserHistory } from 'react-router';
+import { Provider } from 'react-redux';  
+import configureStore from './store/configureStore';
+import routes from './routes';
 
-import App from './components/app';
-import SignIn from './components/auth/signin';
-import reducers from './reducers';
-
-const createStoreWithMiddleware = applyMiddleware(reduxThunk)(createStore);
+// Initialize store
+const store = configureStore();
 
 ReactDOM.render(
-  <Provider store={createStoreWithMiddleware(reducers)}>
-      <Router history={browserHistory}>
-          <Route path="/" component={App}>
-              <Route path="/signin" component={SignIn}></Route>
-          </Route>
-      </Router>
-  </Provider>
-  , document.querySelector('.container'));
+  <Provider store={store}>
+    <Router history={browserHistory} routes={routes} />
+  </Provider>, document.getElementById('root')
+);

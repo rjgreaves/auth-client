@@ -5,13 +5,13 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux';
 import { Field, reduxForm } from 'redux-form';
-import {signInUser } from '../../actions';
+import { loginAction } from '../actions/loginActions';
 
-class SignIn extends Component {
+class LoginPage extends Component {
 
     handleFormSubmit({ email, password }) {
         console.log(email, password);
-        this.props.signInUser({email, password});
+        this.props.loginAction(email, password);
     }
 
     render() {
@@ -35,11 +35,13 @@ class SignIn extends Component {
 }
 
 
-const mapDispatchToProps = dispatch => ({
-    signInUser
-});
+const mapDispatchToProps = (dispatch) => {
+    return {
+        loginAction: (email, password) => dispatch(loginAction(email, password))
+    };
+};
 
 export default connect(null, mapDispatchToProps)(reduxForm({
     form: 'signin',
     fields: ['email', 'password']
-})(SignIn));
+})(LoginPage));
