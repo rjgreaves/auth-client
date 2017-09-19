@@ -14,3 +14,10 @@ export default (
     <Route path="login" component={LoginPage} />
   </Route>
 );
+
+/*
+              <Route path="/signin" component={SignIn}></Route>
+              <Route path="/signout" component={SignOut}></Route>
+              <Route path="/signup" component={SignUp}></Route>
+              <Route path="/feature" component={RequireAuth(Feature)}></Route>
+*/
