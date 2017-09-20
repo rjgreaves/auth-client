@@ -1,8 +1,8 @@
 import { takeLatest } from 'redux-saga/effects';
-import { loginSaga } from './authSaga';
-import * as types from '../actions/actionTypes';
+import { signInSaga } from './authSaga';
+import { AUTH_SIGNIN } from '../actions/types';
 
 // Watches for SEARCH_MEDIA_REQUEST action type asynchronously
 export default function* watchAuthSaga() {
-  yield takeLatest(types.LOGIN, loginSaga);
+  yield takeLatest(AUTH_SIGNIN, signInSaga);
 }

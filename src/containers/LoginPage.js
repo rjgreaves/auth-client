@@ -5,16 +5,12 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux';
 import { Field, reduxForm } from 'redux-form';
-import { loginAction } from '../actions/loginActions';
+import { signInUser } from '../actions/authActions';
 
 class LoginPage extends Component {
 
     handleFormSubmit({ email, password }) {
-<<<<<<< HEAD:src/containers/LoginPage.js
-        console.log(email, password);
-        this.props.loginAction(email, password);
-=======
-        return this.props.signInUser({email, password});
+        this.props.signInUser(email, password);
     }
 
     renderAlert() {
@@ -26,7 +22,6 @@ class LoginPage extends Component {
             )
 
         }
->>>>>>> 69aa522b20359fd48bb7d95ff89817a4f9891326:src/components/auth/signin.js
     }
 
     render() {
@@ -50,18 +45,9 @@ class LoginPage extends Component {
     }
 }
 
-<<<<<<< HEAD:src/containers/LoginPage.js
-
-const mapDispatchToProps = (dispatch) => {
-    return {
-        loginAction: (email, password) => dispatch(loginAction(email, password))
-    };
-};
-=======
 const mapDispatchToProps = dispatch => ({
     signInUser: (email, password) => dispatch(signInUser(email, password))
 });
->>>>>>> 69aa522b20359fd48bb7d95ff89817a4f9891326:src/components/auth/signin.js
 
 const mapStateToProps = state => {
     return {errorMessage: state.auth.error};
