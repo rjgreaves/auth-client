@@ -12,6 +12,10 @@ export default (
   <Route path="/" component={App}>
     <IndexRoute component={HomePage} />
     <Route path="login" component={LoginPage} />
+    <Route path="/signin" component={SignIn}></Route>
+    <Route path="/signout" component={SignOut}></Route>
+    <Route path="/signup" component={SignUp}></Route>
+    <Route path="/feature" component={RequireAuth(Feature)}></Route>
   </Route>
 );
 
