@@ -4,7 +4,7 @@
 
 import  React, { Component } from 'react';
 import { connect } from 'react-redux';
-import * as actions from '../actions';
+import { fetchMessage } from '../actions';
 
 class Feature extends Component {
 
@@ -27,4 +27,4 @@ function mapStateToProps(state) {
     return { message: state.auth.message }
 }
 
-export default connect(mapStateToProps, actions)(Feature);
+export default connect(mapStateToProps, mapDispatchToProps)(Feature);

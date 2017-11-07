@@ -1,8 +1,11 @@
 import React from 'react';
 import { Route, IndexRoute } from 'react-router';
-import App from './containers/App';
+import App from './containers/App/App';
 import HomePage from './components/HomePage';
-import LoginPage from './containers/LoginPage';
+import SignInPage from './containers/SignInPage/SignInPage';
+import SignUpPage from './containers/SignUpPage/SignUpPage';
+import RequireAuth from './components/auth/Authentication';
+import Feature from './components/feature';
 
 // Map components to different routes.
 // The parent component wraps other components and thus serves as 
@@ -11,10 +14,8 @@ import LoginPage from './containers/LoginPage';
 export default (
   <Route path="/" component={App}>
     <IndexRoute component={HomePage} />
-    <Route path="login" component={LoginPage} />
-    <Route path="/signin" component={SignIn}></Route>
-    <Route path="/signout" component={SignOut}></Route>
-    <Route path="/signup" component={SignUp}></Route>
+    <Route path="signin" component={SignInPage} />
+    <Route path="signup" component={SignUpPage} />
     <Route path="/feature" component={RequireAuth(Feature)}></Route>
   </Route>
 );

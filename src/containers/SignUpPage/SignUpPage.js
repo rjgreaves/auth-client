@@ -3,14 +3,13 @@
  */
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux';
 import { Field, reduxForm } from 'redux-form';
-import { signInUser } from '../actions/authActions';
+import { signUpUser } from '../../actions/authActions';
 
-class LoginPage extends Component {
+class SignUpPage extends Component {
 
     handleFormSubmit({ email, password }) {
-        this.props.signInUser(email, password);
+        this.props.signUpUser(email, password);
     }
 
     renderAlert() {
@@ -39,14 +38,14 @@ class LoginPage extends Component {
                     <Field name="password" component="input" type="password" className="form-control"/>
                 </fieldset>
                 {this.renderAlert()}
-                <button action="submit" className="btn btn-primary">Sign In</button>
+                <button action="submit" className="btn btn-primary">Sign Up!</button>
             </form>
        )
     }
 }
 
 const mapDispatchToProps = dispatch => ({
-    signInUser: (email, password) => dispatch(signInUser(email, password))
+    signUpUser: (email, password) => dispatch(signUpUser(email, password)),
 });
 
 const mapStateToProps = state => {
@@ -54,6 +53,6 @@ const mapStateToProps = state => {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(reduxForm({
-    form: 'signin',
+    form: 'signup',
     fields: ['email', 'password']
-})(LoginPage));
+})(SignUpPage));

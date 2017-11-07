@@ -4,7 +4,7 @@ import { Router, browserHistory } from 'react-router';
 import { Provider } from 'react-redux';  
 import configureStore from './store/configureStore';
 import routes from './routes';
-import { AUTH_USER } from './actions/types';
+import { AUTH_USER } from './containers/SignInPage/constants';
 
 // Initialize store
 const store = configureStore();

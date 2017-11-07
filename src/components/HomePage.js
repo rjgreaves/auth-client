@@ -7,8 +7,8 @@ const HomePage = () => (
   <div className="jumbotron center">
     <h1 className="lead">Welcome to Newsletters!</h1>
     <div>
-      <Link to="login">
-        <button className="btn btn-lg btn-primary"> Login</button>
+      <Link to="signin">
+        <button className="btn btn-lg btn-primary"> Sign In</button>
       </Link>
     </div>
   </div>

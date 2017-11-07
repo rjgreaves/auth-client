@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Header from '../common/Header';
+import Header from '../../common/Header';
 import PropTypes from 'prop-types';
 
 // The parent component renders the Header component and component(s) in the
