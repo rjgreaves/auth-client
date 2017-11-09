@@ -1,6 +1,5 @@
 import {
   AUTH_SIGNIN,
-  AUTH_USER,
   AUTH_ERROR,
   CHANGE_EMAIL,
   CHANGE_PASSWORD
@@ -30,12 +29,6 @@ export function changePassword(password) {
 export function signIn(){
   return {
     type: AUTH_SIGNIN
-  };
-}
-
-export function authUser(token){
-  return {
-    type: AUTH_USER
   };
 }
 

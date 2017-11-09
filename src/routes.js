@@ -5,7 +5,7 @@ import HomePage from './components/HomePage';
 import SignInPage from './containers/SignInPage/SignInPage';
 import SignUpPage from './containers/SignUpPage/SignUpPage';
 import RequireAuth from './components/auth/Authentication';
-import Feature from './components/feature';
+import NewslettersPage from './containers/Newsletters/NewslettersPage';
 
 // Map components to different routes.
 // The parent component wraps other components and thus serves as 
@@ -16,7 +16,7 @@ export default (
     <IndexRoute component={HomePage} />
     <Route path="signin" component={SignInPage} />
     <Route path="signup" component={SignUpPage} />
-    <Route path="/feature" component={RequireAuth(Feature)}></Route>
+    <Route path="/newsletters" component={RequireAuth(NewslettersPage)}></Route>
   </Route>
 );
 

@@ -12,6 +12,11 @@
 
 import { fromJS } from 'immutable';
 
+import { 
+  AUTH_USER,
+  UNAUTH_USER
+} from './constants';
+
 // The initial state of the App
 const initialState = fromJS({
   loading: false,
@@ -20,11 +25,20 @@ const initialState = fromJS({
   userData: {
     repositories: false,
   },
+  authenticated: false
 });
 
 function appReducer(state = initialState, action) {
   switch (action.type) {
-    default:
+    case AUTH_USER:
+    localStorage.setItem('token', action.payload);
+    console.log('User authed');
+    return state.set('authenticated', true);
+  case UNAUTH_USER:
+    localStorage.removeItem('token');
+    console.log('User un-authed');
+    return state.set('authenticated', false);
+  default:
       return state;
   }
 }

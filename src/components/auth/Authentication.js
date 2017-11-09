@@ -4,6 +4,10 @@
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
+
+import { makeSelectAuthenticated } from '../../containers/App/appSelectors';
+
 // Higher Order Component
 export default function(ComposedComponent) {
     class Authentication extends Component {
@@ -29,8 +33,10 @@ export default function(ComposedComponent) {
         }
     }
 
-    function mapStateToProps(state) {
-        return { authenticated: state.auth.authenticated };
+    function mapStateToProps() {
+        return createStructuredSelector({
+            authenticated: makeSelectAuthenticated(),
+          });
     }
     return connect(mapStateToProps)(Authentication);
 }

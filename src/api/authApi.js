@@ -8,10 +8,10 @@ export function signInUser(email, password) {
     `${ROOT_URL}/signin`,
     { email, password }
   )
-  .then(response => {
-    // - Save the JWT token
-    return localStorage.setItem('token', response.data.token);
-  })
+  // .then(response => {
+  //   // - Save the JWT token
+  //   return localStorage.setItem('token', response.data.token);
+  // })
   .catch(err => { throw err.response; });
 }
 
