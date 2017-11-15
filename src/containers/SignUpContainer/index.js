@@ -6,7 +6,7 @@ import { connect } from 'react-redux'
 import { Field, reduxForm } from 'redux-form';
 import { signUpUser } from '../../actions/authActions';
 
-class SignUpPage extends Component {
+class SignUpContainer extends Component {
 
     handleFormSubmit({ email, password }) {
         this.props.signUpUser(email, password);
@@ -55,4 +55,4 @@ const mapStateToProps = state => {
 export default connect(mapStateToProps, mapDispatchToProps)(reduxForm({
     form: 'signup',
     fields: ['email', 'password']
-})(SignUpPage));
+})(SignUpContainer));

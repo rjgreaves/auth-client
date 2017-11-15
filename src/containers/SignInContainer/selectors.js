@@ -1,10 +1,10 @@
 /**
- * SignInPage selectors
+ * SignInContainer selectors
  */
 
 import { createSelector } from 'reselect';
 
-const selectSignIn = (state) => state.get('signInPage');
+const selectSignIn = (state) => state.get('signInContainer');
 
 const makeSelectEmail = () => createSelector(
   selectSignIn,

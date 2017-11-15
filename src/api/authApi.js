@@ -1,6 +1,8 @@
 import axios from 'axios';
 
-const ROOT_URL = 'http://localhost:3090';
+import {
+  ROOT_URL
+} from './constants';
 
 export function signInUser(email, password) {
 

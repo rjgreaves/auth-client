@@ -1,5 +1,5 @@
 /**
- * SignInPage selectors
+ * SignInContainer selectors
  */
 
 import { createSelector } from 'reselect';

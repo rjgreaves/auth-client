@@ -12,6 +12,8 @@
 
 import { fromJS } from 'immutable';
 
+import localStorageManager from '../../localStorageManager';
+
 import { 
   AUTH_USER,
   UNAUTH_USER
@@ -31,15 +33,15 @@ const initialState = fromJS({
 function appReducer(state = initialState, action) {
   switch (action.type) {
     case AUTH_USER:
-    localStorage.setItem('token', action.payload);
-    console.log('User authed');
-    return state.set('authenticated', true);
-  case UNAUTH_USER:
-    localStorage.removeItem('token');
-    console.log('User un-authed');
-    return state.set('authenticated', false);
-  default:
-      return state;
+      localStorageManager.setIdToken(action.payload);
+      console.log('User authed');
+      return state.set('authenticated', true);
+    case UNAUTH_USER:
+      localStorageManager.removeIdToken(action.payload);
+      console.log('User un-authed');
+      return state.set('authenticated', false);
+    default:
+        return state;
   }
 }
 

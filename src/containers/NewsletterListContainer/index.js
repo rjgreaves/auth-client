@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class Newsletters extends Component {
+class NewsletterListPage extends Component {
 
   render() {
     return (
@@ -11,4 +11,4 @@ class Newsletters extends Component {
   }
 }
 
-export default Newsletters;
+export default NewsletterListPage;

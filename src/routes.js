@@ -2,10 +2,11 @@ import React from 'react';
 import { Route, IndexRoute } from 'react-router';
 import App from './containers/App/App';
 import HomePage from './components/HomePage';
-import SignInPage from './containers/SignInPage/SignInPage';
-import SignUpPage from './containers/SignUpPage/SignUpPage';
+import SignInContainer from './containers/SignInContainer';
+import SignUpContainer from './containers/SignUpContainer';
 import RequireAuth from './components/auth/Authentication';
-import NewslettersPage from './containers/Newsletters/NewslettersPage';
+import NewsletterListPage from './containers/NewsletterListContainer';
+import NewsletterForm from './containers/NewsletterFormContainer';
 
 // Map components to different routes.
 // The parent component wraps other components and thus serves as 
@@ -14,15 +15,9 @@ import NewslettersPage from './containers/Newsletters/NewslettersPage';
 export default (
   <Route path="/" component={App}>
     <IndexRoute component={HomePage} />
-    <Route path="signin" component={SignInPage} />
-    <Route path="signup" component={SignUpPage} />
-    <Route path="/newsletters" component={RequireAuth(NewslettersPage)}></Route>
+    <Route path="signin" component={SignInContainer} />
+    <Route path="signup" component={SignUpContainer} />
+    <Route path="/newsletters/:newsletterId" component={RequireAuth(NewsletterForm)}></Route>
+    <Route path="/newsletters" component={RequireAuth(NewsletterListPage)}></Route>
   </Route>
 );
-
-/*
-              <Route path="/signin" component={SignIn}></Route>
-              <Route path="/signout" component={SignOut}></Route>
-              <Route path="/signup" component={SignUp}></Route>
-              <Route path="/feature" component={RequireAuth(Feature)}></Route>
-*/

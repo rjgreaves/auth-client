@@ -8,12 +8,12 @@ import { createStructuredSelector } from 'reselect';
 
 import injectReducer from '../../utils/injectReducer';
 import injectSaga from '../../utils/injectSaga';
-import reducer from './signInPageReducer';
-import saga from './signInPageSaga';
-import { changeEmail, changePassword, signIn } from './signInPageActions';
-import { makeSelectEmail, makeSelectPassword, makeSelectError } from './signInPageSelectors';
+import reducer from './reducer';
+import saga from './saga';
+import { changeEmail, changePassword, signIn } from './actions';
+import { makeSelectEmail, makeSelectPassword, makeSelectError } from './selectors';
 
-class SignInPage extends Component {
+class SignInContainer extends Component {
 
   renderAlert() {
     console.log(this.props.errorMessage);
@@ -62,11 +62,11 @@ const mapStateToProps = createStructuredSelector({
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps);
 
-const withReducer = injectReducer({ key: 'signInPage', reducer });
-const withSaga = injectSaga({ key: 'signInPage', saga });
+const withReducer = injectReducer({ key: 'signInContainer', reducer });
+const withSaga = injectSaga({ key: 'signInContainer', saga });
 
 export default compose(
   withReducer,
   withSaga,
   withConnect
-)(SignInPage);
+)(SignInContainer);
